@@ -3,7 +3,7 @@ import { Menu } from "lucide-react";
 
 import MobileSidebar from "./MobileSidebar";
 
-function Navbar() {
+async function Navbar() {
   return (
     <div className="flex items-center p-4">
       <MobileSidebar />

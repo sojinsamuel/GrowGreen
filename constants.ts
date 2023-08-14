@@ -1,41 +1,46 @@
-import { Code, ImageIcon, MessageSquare, Music, VideoIcon } from "lucide-react";
+import {
+  LayoutDashboard,
+  ImageIcon,
+  Search,
+  Music,
+  VideoIcon,
+} from "lucide-react";
 
 export const MAX_FREE_TRIALS = 5;
 
 export const routes = [
   {
-    label: "Conversation",
-    icon: MessageSquare,
-    href: "/conversation",
+    label: "Finder",
+    icon: Search,
+    href: "/finder",
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
   },
+
   {
-    label: "Music Generation",
-    icon: Music,
-    href: "/music",
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-  },
-  {
-    label: "Image Generation",
+    label: "Which Disease is it?",
     icon: ImageIcon,
     color: "text-pink-700",
     bgColor: "bg-pink-700/10",
-    href: "/image",
+    href: "/whichdisease",
+  },
+] as const;
+
+export const links = [
+  {
+    name: "Home",
+    route: "/",
   },
   {
-    label: "Video Generation",
-    icon: VideoIcon,
-    color: "text-orange-700",
-    bgColor: "bg-orange-700/10",
-    href: "/video",
+    name: "Shop",
+    route: "/shop",
   },
   {
-    label: "Code Generation",
-    icon: Code,
-    color: "text-green-700",
-    bgColor: "bg-green-700/10",
-    href: "/code",
+    name: "News",
+    route: "/news",
   },
-];
+] as const;
+
+export const AFFILIATE_CODE =
+  "?tag=thewire06-20&linkCode=xm2&ascsubtag=AwEAAAAAAAAAAn8d";
+// Amazon ref: ?tag=thewire06-20&linkCode=xm2&ascsubtag=AwEAAAAAAAAAAn8d

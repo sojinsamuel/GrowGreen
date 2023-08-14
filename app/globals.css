@@ -81,3 +81,27 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+input[type="file"] {
+  background: #e9e9ed;
+  padding: 10px 6px;
+  letter-spacing: 1.5px;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.35);
+  border-radius: 5px;
+}
+
+/* label {
+  text-transform: uppercase;
+  columns: #fff;
+  background: #c0392b;
+  text-align: center;
+  padding: 15px 40px;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+} */

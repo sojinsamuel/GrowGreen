@@ -4,13 +4,8 @@ import {
   Code,
   ImageIcon,
   LayoutDashboard,
-  MessageSquare,
-  Music,
-  Option,
-  Save,
   Search,
   Settings,
-  VideoIcon,
 } from "lucide-react";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
@@ -18,7 +13,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-// import { routes } from "@/constants";
 
 const montserrat = Montserrat({
   weight: "600",
@@ -36,36 +30,17 @@ const routes = [
   {
     label: "Finder",
     icon: Search,
-    href: "/conversation",
+    href: "/finder",
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
   },
+
   {
-    label: "Best Choices",
-    icon: Option,
-    href: "/music",
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
-  },
-  {
-    label: "Locate by Image",
+    label: "Which Disease is it?",
     icon: ImageIcon,
     color: "text-pink-700",
     bgColor: "bg-pink-700/10",
-    href: "/image",
-  },
-  {
-    label: "My Favs",
-    icon: Save,
-    color: "text-green-700",
-    bgColor: "bg-green-700/10",
-    href: "/code",
-  },
-  {
-    label: "Settings",
-    icon: Settings,
-
-    href: "/settings",
+    href: "/whichdisease",
   },
 ];
 
