@@ -106,7 +106,7 @@ function Finder() {
         setSeedCart(shoppingResponse.data.slice(0, 5));
 
         const serpResponse = await axios.post("/api/serp", {
-          searchTerm: "jasmine",
+          searchTerm: values.prompt,
         });
 
         // console.log(serpResponse.data);
