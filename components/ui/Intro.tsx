@@ -5,9 +5,24 @@ import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 import { Button } from "./button";
 import { Github, Pencil, Rocket, Youtube } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 function Intro() {
   const { isSignedIn } = useAuth();
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("https://github.com/sojinsamuel/GrowGreen");
+  };
+
+  const handleArticle = () => {
+    router.push(
+      "https://www.showwcase.com/show/36110/reactplay-hackathon-project-day-1-recap?seriesId=11791&seriesIndex=0"
+    );
+  };
+
+  const handleVideo = () => {
+    router.push("https://www.youtube.com/");
+  };
   return (
     <div className=" font-bold py-36 text-center space-y-5 overflow-hidden">
       <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
@@ -41,15 +56,27 @@ function Intro() {
         </Link>
       </div>
       <div className="flex justify-center items-center h-20 gap-5 font-extrabold">
-        <Button variant="cta" className="text-black text-xs md:text-sm  ">
+        <Button
+          variant="cta"
+          className="text-black text-xs md:text-sm  "
+          onClick={handleVideo}
+        >
           <Youtube />
           &nbsp; Video
         </Button>
-        <Button variant="cta" className="text-black text-xs md:text-sm   ">
+        <Button
+          variant="cta"
+          className="text-black text-xs md:text-sm   "
+          onClick={handleClick}
+        >
           <Github />
           &nbsp; Source Code
         </Button>
-        <Button variant="cta" className="text-black text-xs md:text-sm   ">
+        <Button
+          variant="cta"
+          className="text-black text-xs md:text-sm"
+          onClick={handleArticle}
+        >
           <Pencil />
           &nbsp; Article
         </Button>

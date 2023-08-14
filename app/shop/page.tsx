@@ -5,18 +5,31 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 
 async function Shop() {
-  const response = await fetch(fetchHostUrl("/api/scrape-shopping"), {
+  console.log("URL", fetchHostUrl("/api/scrape-shopping"));
+
+  const response = await fetch("https://realtime.oxylabs.io/v1/queries", {
     method: "POST",
+    body: JSON.stringify({
+      source: "amazon_search",
+      domain: "in",
+      query: `plant`,
+      start_page: 1,
+      pages: 1,
+      parse: true,
+    }),
     headers: {
       "Content-Type": "application/json",
+      Authorization:
+        "Basic " +
+        Buffer.from(
+          `${process.env.NEXT_PUBLIC_O_SHOPPING_USERNAME}:${process.env.NEXT_PUBLIC_O_SHOPPING_PASSWORD}`
+        ).toString("base64"),
     },
-    body: JSON.stringify({
-      searchTerm: "Plant",
-    }),
-    next: { revalidate: 60 },
+    cache: "no-store",
   });
 
-  const shoppingItems = await response.json();
+  const shoppingItems = (await response.json()).results[0].content.results
+    .organic;
 
   return (
     <>

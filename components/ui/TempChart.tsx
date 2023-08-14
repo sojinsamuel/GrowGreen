@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
 import { Card, AreaChart, Title } from "@tremor/react";
+import { Bugfender } from "@bugfender/sdk";
 //@ts-ignore
 
 function TempChart({ data }) {
@@ -13,6 +15,9 @@ function TempChart({ data }) {
     )
     .slice(0, 24);
   // console.log(hourly);
+  useEffect(() => {
+    Bugfender.log("Logged in Successfully");
+  }, []);
 
   const stats = hourly.map((hour: string, i: number) => ({
     time: Number(hour),

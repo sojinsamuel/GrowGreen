@@ -10,7 +10,7 @@ import { ExclamationIcon } from "@heroicons/react/solid";
 import Heading from "@/components/ui/Heading";
 import { formSchema } from "./constants";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,6 +22,7 @@ import { toast as t } from "react-hot-toast";
 import { Callout } from "@tremor/react";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
+import { Bugfender } from "@bugfender/sdk";
 
 const spanStyle = {
   padding: "20px",
@@ -71,7 +72,14 @@ function Finder() {
   });
 
   const isLoading = form.formState.isSubmitting;
+  console.log(process.env.NEXT_PUBLIC_BUGFENDER_API_KEY);
+
   // console.log(hasRecievedData);
+  useEffect(() => {
+    Bugfender.init({
+      appKey: process.env.NEXT_PUBLIC_BUGFENDER_API_KEY!,
+    });
+  }, []);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setRelatedArticles([]);
@@ -145,10 +153,11 @@ function Finder() {
       setHasRecievedData(false);
     } catch (error: any) {
       t.error("Try a plant name. eg: Jasmine or upload a plant image.");
+      Bugfender.sendIssue("Plant Finder Page", error);
+      Bugfender.log("Plant Finder Page", error);
     } finally {
       router.refresh();
       handleClearFileUpload();
-      // console.log("Fetch Completed");
       setHasRecievedData(false);
     }
   };
