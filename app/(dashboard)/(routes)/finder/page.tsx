@@ -298,9 +298,9 @@ function Finder() {
                     )}
                   </li>
                 </ul>
-                <Button size="default" className="bg-customColor mt-3">
+                {/* <Button size="default" className="bg-customColor mt-3">
                   Save to my list
-                </Button>
+                </Button> */}
               </div>
             </div>
 
