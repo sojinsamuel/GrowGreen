@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Montserrat } from "next/font/google";
 import { links } from "@/constants";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useAuth } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 
@@ -13,15 +14,16 @@ function Header() {
   const pathname = usePathname();
   const { isSignedIn } = useAuth();
 
-  if (
-    pathname === "/dashboard" ||
-    pathname === "/finder" ||
-    pathname === "/whichdisease" ||
-    pathname === "/sign-up" ||
-    pathname === "/sign-in"
-  )
-    return null;
-
+  useEffect(() => {
+    if (
+      pathname === "/dashboard" ||
+      pathname === "/finder" ||
+      pathname === "/whichdisease" ||
+      pathname[1] === "s"
+    ) {
+      return;
+    }
+  }, [pathname]);
   return (
     <header className="z-[999] relative">
       <motion.div

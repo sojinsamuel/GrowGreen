@@ -31,7 +31,6 @@ export async function POST(req: Request) {
             `${process.env.OXYLABS_SERP_USERNAME}:${process.env.OXYLABS_SERP_PASSWORD}`
           ).toString("base64"),
       },
-      cache: "no-store",
     });
 
     const data = await response.json();

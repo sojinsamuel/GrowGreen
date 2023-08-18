@@ -4,9 +4,7 @@ import { fetchHostUrl } from "@/helper/fetchHostUrl";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 
-async function Shop() {
-  console.log("URL", fetchHostUrl("/api/scrape-shopping"));
-
+async function fetchAmazonPlantProducts() {
   const response = await fetch("https://realtime.oxylabs.io/v1/queries", {
     method: "POST",
     body: JSON.stringify({
@@ -25,11 +23,17 @@ async function Shop() {
           `${process.env.NEXT_PUBLIC_O_SHOPPING_USERNAME}:${process.env.NEXT_PUBLIC_O_SHOPPING_PASSWORD}`
         ).toString("base64"),
     },
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
 
-  const shoppingItems = (await response.json()).results[0].content.results
-    .organic;
+  const items = (await response.json()).results[0].content.results.organic;
+  return items;
+}
+
+async function Shop() {
+  console.log("URL", fetchHostUrl("/api/scrape-shopping"));
+
+  const shoppingItems = await fetchAmazonPlantProducts();
 
   return (
     <>
@@ -38,7 +42,7 @@ async function Shop() {
           <Terminal className="h-4 w-4" />
           <AlertTitle>Heads up!</AlertTitle>
           <AlertDescription>
-            These are affiliate links, I may earn a commission if you click on
+            These are affiliate links, I may earn a commission if you Purchase
           </AlertDescription>
         </Alert>
       </div>
