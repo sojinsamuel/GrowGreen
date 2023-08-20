@@ -12,17 +12,10 @@ function Header() {
   const pathname = usePathname();
   const { isSignedIn } = useAuth();
 
-  if (
-    pathname === "/dashboard" ||
-    pathname === "/finder" ||
-    pathname === "/whichdisease" ||
-    pathname === "/sign-up" ||
-    pathname === "/sign-in"
-  ) {
-    return null;
-  }
+  const shouldRenderHeader =
+    pathname === "/" || pathname === "/news" || pathname === "/shop";
 
-  return (
+  return shouldRenderHeader ? (
     <header className="z-[999] relative">
       <motion.div
         className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-white border-opacity-40  bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75 -translate-x-1/2"
@@ -57,7 +50,7 @@ function Header() {
         </ul>
       </nav>
     </header>
-  );
+  ) : null;
 }
 
 export default Header;
