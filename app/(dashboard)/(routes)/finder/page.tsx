@@ -23,6 +23,8 @@ import { Callout } from "@tremor/react";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 // import { Bugfender } from "@bugfender/sdk";
+// import response from "@/response.json";
+
 let plantname: string;
 
 const spanStyle = {
@@ -74,32 +76,6 @@ function Finder() {
 
   const isLoading = form.formState.isSubmitting;
 
-  const getPlantDetailsByImg = async () => {
-    console.log("Fetching plant API");
-    const response = await axios.post("/api/plantid", {
-      base64,
-    });
-
-    console.log("Data from Plant API", response);
-    plantname = response.data.suggestions[0].plant_name;
-    setMessages(response?.data);
-  };
-
-  const getPlantDetailsByText = async (userMessage: any) => {
-    console.log("Fetching openai");
-    const response = await axios.post("/api/finder", {
-      messages: userMessage,
-    });
-    plantname = response.data.text.name;
-    // if (response.status === 400) {
-    //   t.error("Only Plant related prompts are allowed. Try again.");
-    //   return;
-    // }
-
-    console.log("Data from Openai", response.data);
-    setMessages(response?.data);
-  };
-
   const scrapePlantDetails = async (prompt: any) => {
     const shoppingResponse = await axios.post("/api/scrape-shopping", {
       searchTerm: prompt,
@@ -120,6 +96,38 @@ function Finder() {
     return plantname.charAt(0).toUpperCase() + plantname.slice(1);
   };
 
+  const getPlantDetailsByImg = async () => {
+    console.log("Fetching plant API");
+    const response = await axios.post("/api/plantid", {
+      base64,
+    });
+
+    console.log("Data from Plant API", response);
+    if (!response.data.is_plant) {
+      t.error("Only Plant related images are allowed. Try again.");
+      setMessages(undefined);
+      setBase64(undefined);
+      setRelatedArticles([]);
+      setSeedCart([]);
+      return;
+    }
+    plantname = response.data.suggestions[0].plant_name;
+    setMessages(response?.data);
+    await scrapePlantDetails(`${makeFirstLetterCapital(plantname)} Plant`);
+  };
+
+  const getPlantDetailsByText = async (userMessage: any) => {
+    console.log("Fetching openai");
+    const response = await axios.post("/api/finder", {
+      messages: userMessage,
+    });
+    plantname = response.data.text.name;
+
+    console.log("Data from Openai", response.data);
+    setMessages(response?.data);
+    await scrapePlantDetails(`${makeFirstLetterCapital(plantname)} Plant`);
+  };
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setRelatedArticles([]);
     setHasRecievedData(true);
@@ -135,14 +143,11 @@ function Finder() {
         await getPlantDetailsByText(userMessage);
       }
 
-      await scrapePlantDetails(`${makeFirstLetterCapital(plantname)} Plant`);
-
       form.reset();
-      setHasRecievedData(false);
     } catch (error: any) {
       t.error(error);
     } finally {
-      router.refresh();
+      // router.refresh();
       handleClearFileUpload();
       setHasRecievedData(false);
       console.log("Messages", messages);
@@ -278,10 +283,9 @@ function Finder() {
                   <li>
                     <CheckCircle color="green" className="inline mr-1 " />
                     &nbsp;Common Names:{" "}
-                    {messages?.suggestions[0].plant_details.common_names.join(
+                    {messages?.suggestions[0]?.plant_details?.common_names?.join(
                       ", "
-                    ) ||
-                      "Should be looped through to show all [Plant Common Names]"}
+                    ) || "Should be looped through to show all [Common Names]"}
                   </li>
                 </ul>
               </div>
@@ -292,6 +296,7 @@ function Finder() {
             <RelatedArticles relatedArticles={relatedArticles} />
           </>
         )}
+
         {relatedArticles.length > 1 && messages.text && (
           <>
             <div className="space-y-4 mt-4 flex flex-col md:flex-row items-center justify-center gap-5 px-3 py-5">

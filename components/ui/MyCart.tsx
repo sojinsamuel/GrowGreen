@@ -2,6 +2,7 @@
 //@ts-ignore
 
 function MyCart({ seedList }) {
+  console.log(seedList);
   return (
     <>
       <h3 className="text-lg font-extrabold my-5">Buy Seeds from Amazon</h3>

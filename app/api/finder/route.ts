@@ -55,9 +55,9 @@ export async function POST(req: Request) {
 
     // console.log("Backend Fetch Done");
 
-    if (response.text.error_flag) {
-      return new NextResponse("Only Plant Name are allowed", { status: 400 });
-    }
+    // if (response.text.error_flag) {
+    //   return new NextResponse("Only Plant Name are allowed", { status: 400 });
+    // }
 
     return NextResponse.json(response);
   } catch (error) {

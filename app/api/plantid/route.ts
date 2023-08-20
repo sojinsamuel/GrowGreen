@@ -36,17 +36,17 @@ export async function POST(req: Request) {
 
     console.log("Plant response", response.data);
 
-    if (!response.data.is_plant) {
-      return new NextResponse(
-        "Upload Failed. Images of only plants are allowed",
-        { status: 404 }
-      );
-    }
+    // if (!response.data.is_plant) {
+    //   return new NextResponse(
+    //     "Upload Failed. Images of only plants are allowed",
+    //     { status: 302 }
+    //   );
+    // }
 
     return NextResponse.json(response.data);
   } catch (error) {
     console.log("Plant Identification Error", error);
 
-    return new NextResponse("Plant Identification Error", { status: 500 });
+    return new NextResponse("Plant Identification Error", { status: 300 });
   }
 }
