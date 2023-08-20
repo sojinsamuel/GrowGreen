@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Montserrat } from "next/font/google";
 import { links } from "@/constants";
 import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
@@ -19,8 +18,9 @@ function Header() {
     pathname === "/whichdisease" ||
     pathname === "/sign-up" ||
     pathname === "/sign-in"
-  )
+  ) {
     return null;
+  }
 
   return (
     <header className="z-[999] relative">

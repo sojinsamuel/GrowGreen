@@ -22,7 +22,10 @@ import { toast as t } from "react-hot-toast";
 import { Callout } from "@tremor/react";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
-import { Bugfender } from "@bugfender/sdk";
+// import { Bugfender } from "@bugfender/sdk";
+// import response from "@/response.json";
+
+let plantname: string;
 
 const spanStyle = {
   padding: "20px",
@@ -72,109 +75,95 @@ function Finder() {
   });
 
   const isLoading = form.formState.isSubmitting;
-  console.log(process.env.NEXT_PUBLIC_BUGFENDER_API_KEY);
 
-  // console.log(hasRecievedData);
-  useEffect(() => {
-    Bugfender.init({
-      appKey: process.env.NEXT_PUBLIC_BUGFENDER_API_KEY!,
+  const scrapePlantDetails = async (prompt: any) => {
+    const shoppingResponse = await axios.post("/api/scrape-shopping", {
+      searchTerm: prompt,
     });
-  }, []);
+
+    console.log("Shopping Response", shoppingResponse.data);
+
+    setSeedCart(shoppingResponse.data.slice(0, 5));
+
+    const serpResponse = await axios.post("/api/serp", {
+      searchTerm: prompt,
+    });
+
+    setRelatedArticles(serpResponse.data);
+  };
+
+  const makeFirstLetterCapital = (plantname: string) => {
+    return plantname.charAt(0).toUpperCase() + plantname.slice(1);
+  };
+
+  const getPlantDetailsByImg = async () => {
+    console.log("Fetching plant API");
+    const response = await axios.post("/api/plantid", {
+      base64,
+    });
+
+    console.log("Data from Plant API", response);
+    if (!response.data.is_plant) {
+      t.error("Only Plant related images are allowed. Try again.");
+      setMessages(undefined);
+      setBase64(undefined);
+      setRelatedArticles([]);
+      setSeedCart([]);
+      return;
+    }
+    plantname = response.data.suggestions[0].plant_name;
+    setMessages(response?.data);
+    await scrapePlantDetails(`${makeFirstLetterCapital(plantname)} Plant`);
+  };
+
+  const getPlantDetailsByText = async (userMessage: any) => {
+    console.log("Fetching openai");
+    const response = await axios.post("/api/finder", {
+      messages: userMessage,
+    });
+    plantname = response.data.text.name;
+
+    console.log("Data from Openai", response.data);
+    setMessages(response?.data);
+    await scrapePlantDetails(`${makeFirstLetterCapital(plantname)} Plant`);
+  };
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setRelatedArticles([]);
     setHasRecievedData(true);
-    setBase64(undefined);
+    // setBase64(undefined);
     try {
       if (base64) {
-        console.log("Fetching plant API");
-        const response = await axios.post("/api/plantid", {
-          base64,
-        });
-
-        console.log("Data from Plant API", response);
-        setMessages(response?.data);
-
-        // console.log("Search keyword", messages.suggestions[0].plant_name);
-        const shoppingResponse = await axios.post("/api/scrape-shopping", {
-          searchTerm: "jasmine",
-        });
-
-        console.log("Shopping Response", shoppingResponse.data);
-
-        // console.log(response.data.slice(0, 5));
-        setSeedCart(shoppingResponse.data.slice(0, 5));
-
-        const serpResponse = await axios.post("/api/serp", {
-          searchTerm: values.prompt,
-        });
-
-        // console.log(serpResponse.data);
-        setRelatedArticles(serpResponse.data);
+        await getPlantDetailsByImg();
       } else {
-        console.log("Fetching openai");
-
         const userMessage = {
           role: "user",
           content: values.prompt,
         };
-
-        const response = await axios.post("/api/finder", {
-          messages: userMessage,
-        });
-
-        if (response.status === 400) {
-          t.error("Only Plant related prompts are allowed. Try again.");
-          return;
-        }
-
-        console.log("Data from Openai", response.data);
-        // const obj = JSON.parse(response?.data) || "Error";
-        // console.log("Object", typeof obj);
-
-        setMessages(response?.data);
-        // console.log("Messages", messages);
-        const shoppingResponse = await axios.post("/api/scrape-shopping", {
-          searchTerm: values.prompt,
-        });
-
-        // console.log(response.data.slice(0, 5));
-        setSeedCart(shoppingResponse.data.slice(0, 5));
-
-        const serpResponse = await axios.post("/api/serp", {
-          searchTerm: values.prompt,
-        });
-
-        // console.log(serpResponse.data);
-        setRelatedArticles(serpResponse.data);
+        await getPlantDetailsByText(userMessage);
       }
 
       form.reset();
-      setHasRecievedData(false);
     } catch (error: any) {
-      t.error("Try a plant name. eg: Jasmine or upload a plant image.");
-      Bugfender.sendIssue("Plant Finder Page", error);
-      Bugfender.log("Plant Finder Page", error);
+      t.error(error);
     } finally {
-      router.refresh();
+      // router.refresh();
       handleClearFileUpload();
       setHasRecievedData(false);
+      console.log("Messages", messages);
+      console.log("Articles", relatedArticles);
+      console.log("Seed", seedCart);
     }
   };
 
   const validateFields = () => {
-    // User is not allowed to submit a prompt and upload a file at the same time
-    // If the user has uploaded a file, don't disable the button anymore
     if (base64) {
       return false;
     }
-
-    // disable the button if the prompt is empty
     return !form.getValues().prompt;
   };
 
   const handleFileUpload = (fileData: any) => {
-    // console.log(fileData.base64);
     setBase64(fileData.base64);
   };
 
@@ -182,9 +171,10 @@ function Finder() {
     setFileKey((prevKey) => prevKey + 1);
     setBase64(undefined);
   };
-  console.log("Messages", messages);
-  console.log("Articles", relatedArticles);
-  console.log("Seed", seedCart);
+
+  // console.log("Messages", messages);
+  // console.log("Articles", relatedArticles);
+  // console.log("Seed", seedCart);
 
   return (
     <div>
@@ -209,12 +199,12 @@ function Finder() {
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="
-                rounded-lg 
-                border 
-                w-full 
-                p-4 
-                px-3 
-                md:px-6 
+                rounded-lg
+                border
+                w-full
+                p-4
+                px-3
+                md:px-6
                 focus-within:shadow-sm
                 grid
                 grid-cols-12
@@ -281,26 +271,23 @@ function Finder() {
               </div>
               <div className="items-center">
                 <p className="text-customColor font-extrabold text-2xl">
-                  {messages?.suggestions[0].plant_name}
+                  {messages?.suggestions[0].plant_name ||
+                    "Should be looped through to show all [Plant name]"}
                 </p>
                 <p className="text-gray-500 text-lg w-[40vw] mb-5">
-                  {
-                    messages?.suggestions[0].plant_details.wiki_description
-                      .value
-                  }
+                  {messages?.suggestions[0].plant_details.wiki_description
+                    .value ||
+                    "Should be looped through to show all [Plant Desc]"}
                 </p>
                 <ul className=" w-[40vw] text-gray-600 text-lg">
                   <li>
                     <CheckCircle color="green" className="inline mr-1 " />
                     &nbsp;Common Names:{" "}
-                    {messages?.suggestions[0].plant_details.common_names.join(
+                    {messages?.suggestions[0]?.plant_details?.common_names?.join(
                       ", "
-                    )}
+                    ) || "Should be looped through to show all [Common Names]"}
                   </li>
                 </ul>
-                {/* <Button size="default" className="bg-customColor mt-3">
-                  Save to my list
-                </Button> */}
               </div>
             </div>
 
@@ -309,6 +296,7 @@ function Finder() {
             <RelatedArticles relatedArticles={relatedArticles} />
           </>
         )}
+
         {relatedArticles.length > 1 && messages.text && (
           <>
             <div className="space-y-4 mt-4 flex flex-col md:flex-row items-center justify-center gap-5 px-3 py-5">
@@ -337,9 +325,6 @@ function Finder() {
                     &nbsp;{messages?.text.temperature}
                   </li>
                 </ul>
-                <Button size="default" className="bg-customColor mt-3">
-                  Save to my list
-                </Button>
               </div>
             </div>
             <MyCart seedList={seedCart} />
@@ -347,9 +332,8 @@ function Finder() {
           </>
         )}
 
-        {hasRecievedData ? (
-          <SkeletonLoader />
-        ) : (
+        {hasRecievedData && <SkeletonLoader />}
+        {relatedArticles.length < 1 && !hasRecievedData && (
           <div className="slide-container mx-auto mt-10 w-[50vw] ">
             <Slide>
               {slideImages.map((slideImage, index) => (
