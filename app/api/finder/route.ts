@@ -51,7 +51,7 @@ export async function POST(req: Request) {
       image: imageResponse.data.data,
     };
 
-    // console.log(response);
+    console.log(response);
 
     // console.log("Backend Fetch Done");
 

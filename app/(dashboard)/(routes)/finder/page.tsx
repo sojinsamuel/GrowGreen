@@ -58,7 +58,6 @@ const slideImages = [
 ];
 
 function Finder() {
-  const router = useRouter();
   const [messages, setMessages] = useState<any>();
 
   const [base64, setBase64] = useState<undefined>(undefined);
@@ -121,6 +120,15 @@ function Finder() {
     const response = await axios.post("/api/finder", {
       messages: userMessage,
     });
+    if (response.data.text.error_flag || response.data.text.error) {
+      t.error("Only Plant Name are allowed");
+      setMessages(undefined);
+      setBase64(undefined);
+      setRelatedArticles([]);
+      setSeedCart([]);
+      return;
+    }
+
     plantname = response.data.text.name;
 
     console.log("Data from Openai", response.data);
@@ -147,7 +155,6 @@ function Finder() {
     } catch (error: any) {
       t.error(error);
     } finally {
-      // router.refresh();
       handleClearFileUpload();
       setHasRecievedData(false);
       console.log("Messages", messages);
