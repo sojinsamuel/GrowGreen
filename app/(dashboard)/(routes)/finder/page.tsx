@@ -199,12 +199,12 @@ function Finder() {
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="
-                rounded-lg 
-                border 
-                w-full 
-                p-4 
-                px-3 
-                md:px-6 
+                rounded-lg
+                border
+                w-full
+                p-4
+                px-3
+                md:px-6
                 focus-within:shadow-sm
                 grid
                 grid-cols-12
