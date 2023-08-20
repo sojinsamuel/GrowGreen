@@ -22,8 +22,10 @@ import { toast as t } from "react-hot-toast";
 import { Callout } from "@tremor/react";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
-// import { Bugfender } from "@bugfender/sdk";
-// import response from "@/response.json";
+import initBugfender from "@/helper/initBugfender";
+import { Bugfender } from "@bugfender/sdk";
+
+initBugfender();
 
 let plantname: string;
 
@@ -66,6 +68,10 @@ function Finder() {
   const [relatedArticles, setRelatedArticles] = useState([]);
   const [hasRecievedData, setHasRecievedData] = useState(false);
 
+  useEffect(() => {
+    Bugfender.log("Finder Page Component Mounted");
+  }, []);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -89,6 +95,10 @@ function Finder() {
     });
 
     setRelatedArticles(serpResponse.data);
+    Bugfender.sendLog({
+      tag: "Scraping Plant details",
+      text: "Oxylabs Scrape Initialized",
+    });
   };
 
   const makeFirstLetterCapital = (plantname: string) => {
@@ -154,12 +164,13 @@ function Finder() {
       form.reset();
     } catch (error: any) {
       t.error(error);
+      Bugfender.log(error);
     } finally {
       handleClearFileUpload();
       setHasRecievedData(false);
-      console.log("Messages", messages);
-      console.log("Articles", relatedArticles);
-      console.log("Seed", seedCart);
+      // console.log("Messages", messages);
+      // console.log("Articles", relatedArticles);
+      // console.log("Seed", seedCart);
     }
   };
 
