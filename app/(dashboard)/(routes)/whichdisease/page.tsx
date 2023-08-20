@@ -3,12 +3,16 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import DiseaseDetailsSkeleton from "@/components/ui/DisableDetailsSkeleton";
 import toast from "react-hot-toast";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
+import initBugfender from "@/helper/initBugfender";
+import { Bugfender } from "@bugfender/sdk";
+
+initBugfender();
 
 const spanStyle = {
   padding: "20px",
@@ -42,6 +46,10 @@ const slideImages = [
 function FindDisease() {
   const [file, setFile] = useState<any>(undefined);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    Bugfender.log("Find Disease Component Mounted");
+  }, []);
 
   const handlePhotoUpload = async (e: any) => {
     setFile(undefined);
@@ -85,8 +93,13 @@ function FindDisease() {
       }
     };
     reader.onerror = function (error) {
-      console.log("Error: ", error);
+      // console.log("Error: ", error);
+      Bugfender.log("Error: ", error);
     };
+    Bugfender.sendLog({
+      tag: "Disease Detection",
+      text: "Initiating Disease Detection",
+    });
   };
 
   return (

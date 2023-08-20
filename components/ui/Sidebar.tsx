@@ -1,11 +1,9 @@
 "use client";
 
 import {
-  Code,
   ImageIcon,
   LayoutDashboard,
   Search,
-  Settings,
 } from "lucide-react";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
@@ -54,7 +52,7 @@ function Sidebar() {
             <Image fill alt="grow green" src="/logo.png" />
           </div>
           <h1 className={cn("text-2xl font-bold", montserrat.className)}>
-            Grow Green
+            <Link href="/">Grow Greener</Link>
           </h1>
         </Link>
         <div className="space-y-1">
