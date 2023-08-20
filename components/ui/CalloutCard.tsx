@@ -3,7 +3,7 @@
 import { Callout } from "@tremor/react";
 import { ExclamationIcon, CheckCircleIcon } from "@heroicons/react/solid";
 import { useUser } from "@clerk/nextjs";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import initBugfender from "@/helper/initBugfender";
 import { Bugfender } from "@bugfender/sdk";
 
@@ -16,6 +16,8 @@ type Props = {
 let CITY = "";
 
 function CalloutCard({ location, warning }: Props) {
+  const [currentLocation, setCurrentLocation] = useState(undefined);
+
   const { user } = useUser();
   async function getLocation() {
     const res = await fetch(
@@ -27,6 +29,7 @@ function CalloutCard({ location, warning }: Props) {
     } = await res.json();
     // console.log(data);
     CITY = name;
+    setCurrentLocation(name);
     console.log({ CITY });
 
     return name;
@@ -41,7 +44,7 @@ function CalloutCard({ location, warning }: Props) {
   }, []);
 
   const message = `Hie ${user?.firstName}, I see you are from ${
-    CITY || "{Searching...}"
+    currentLocation || "{Searching...}"
   }. Below are some stats that may help you to study the climatic conditions in your area`;
   return (
     <Callout

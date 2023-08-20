@@ -3,16 +3,11 @@ import TempChart from "@/components/ui/TempChart";
 import getClimateStats from "@/helper/getClimateStats";
 import RainChart from "@/components/ui/RainChart";
 import HumidityChart from "@/components/ui/HumidityChart";
-import initBugfender from "@/helper/initBugfender";
-import { Bugfender } from "@bugfender/sdk";
-
-initBugfender();
 
 export default async function Dashboard() {
   const { data, city } = await getClimateStats();
   // const user = useUser();
   // console.log();
-  Bugfender.log("Dashboard Page Component Mounted");
 
   return (
     <div className="mb-8 space-y-4 ">
