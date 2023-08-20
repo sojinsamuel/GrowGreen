@@ -40,7 +40,10 @@
           }
         ],
         "plant_details": {
-          "common_names": ["Spider Flower", "Australian Oaks"],
+          "common_names": [
+            "Spider Flower",
+            "Australian Oaks"
+          ],
           "taxonomy": {
             "class": "Magnoliopsida",
             "order": "Proteales",
@@ -64,7 +67,9 @@
         }
       }
     ],
-    "modifiers": ["similar_images"],
+    "modifiers": [
+      "similar_images"
+    ],
     "secret": "bM33tKhMSpKKUZM",
     "fail_cause": null,
     "countable": true,
