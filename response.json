@@ -1,75 +1,241 @@
 {
-  "data": {
-    "id": 1000853284,
-    "custom_id": null,
-    "meta_data": {
-      "latitude": null,
-      "longitude": null,
-      "date": "2023-08-19",
-      "datetime": "2023-08-19"
-    },
-    "uploaded_datetime": 1692475917.348828,
-    "finished_datetime": 1692475917.735528,
-    "images": [
+  "id": 1000910432,
+  "custom_id": null,
+  "meta_data": {
+    "latitude": null,
+    "longitude": null,
+    "date": "2023-08-21",
+    "datetime": "2023-08-21"
+  },
+  "uploaded_datetime": 1692601821.463422,
+  "finished_datetime": 1692601821.76753,
+  "images": [
+    {
+      "file_name": "f76ae2537d3c4411ad79e0a8506264ba.jpg",
+      "url": "https://plant.id/media/imgs/f76ae2537d3c4411ad79e0a8506264ba.jpg"
+    }
+  ],
+  "modifiers": ["health_only", "similar_images"],
+  "secret": "7GyfCGk5G1ZhZuM",
+  "fail_cause": null,
+  "countable": true,
+  "feedback": null,
+  "is_plant": true,
+  "is_plant_probability": 1,
+  "health_assessment": {
+    "is_healthy": false,
+    "is_healthy_probability": 0.0000010728836059570312,
+    "diseases": [
       {
-        "file_name": "5ad33d6874ea4c2d944c621397faee5c.jpg",
-        "url": "https://plant.id/media/imgs/5ad33d6874ea4c2d944c621397faee5c.jpg"
-      }
-    ],
-    "suggestions": [
-      {
-        "id": 100085328400,
-        "plant_name": "Grevillea",
-        "probability": 0.013689334,
-        "confirmed": false,
+        "name": "Fungi",
+        "probability": 0.99244153,
         "similar_images": [
           {
-            "id": "141928080c5f30ef583abd200fbbd2dc36e49e54",
-            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/141/928080c5f30ef583abd200fbbd2dc36e49e54.jpeg",
-            "license_name": "CC BY 4.0",
-            "license_url": "https://creativecommons.org/licenses/by/4.0/",
-            "citation": "Michael Hains",
-            "similarity": 0.177,
-            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/141/928080c5f30ef583abd200fbbd2dc36e49e54.small.jpeg"
+            "id": "a7ebe6f340bffb0dbfc92f7026a5eb92d515a8d8",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/a7e/be6f340bffb0dbfc92f7026a5eb92d515a8d8.jpg",
+            "similarity": 0.724,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/a7e/be6f340bffb0dbfc92f7026a5eb92d515a8d8.small.jpg"
           },
           {
-            "id": "d4cd7becaafb6c1cdcfffc5442a97e5513c2b52d",
-            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/d4c/d7becaafb6c1cdcfffc5442a97e5513c2b52d.jpeg",
-            "similarity": 0.174,
-            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/d4c/d7becaafb6c1cdcfffc5442a97e5513c2b52d.small.jpeg"
+            "id": "d74e31e577e0b53ad66d2d987e5a2dbfb62f2b85",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/d74/e31e577e0b53ad66d2d987e5a2dbfb62f2b85.jpg",
+            "similarity": 0.549,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/d74/e31e577e0b53ad66d2d987e5a2dbfb62f2b85.small.jpg"
           }
         ],
-        "plant_details": {
-          "common_names": ["Spider Flower", "Australian Oaks"],
-          "taxonomy": {
-            "class": "Magnoliopsida",
-            "order": "Proteales",
-            "family": "Proteaceae",
-            "phylum": "Tracheophyta",
-            "kingdom": "Plantae",
-            "genus": "Grevillea"
+        "entity_id": 458,
+        "disease_details": {
+          "local_name": "Fungi",
+          "description": "Fungi take energy from the plants on which they live, causing damage to the plant. Fungal infections are responsible for approximately two-thirds of infectious plant diseases and cause wilting, molding, rusts, scabs, rotted tissue, and other problems.",
+          "treatment": {
+            "chemical": [
+              "If necessary, apply a fungicide. If you don' know the fungus species, choose fungicide based on the infected plant (e.g. house plant, garden plant, tree)."
+            ],
+            "biological": [
+              "If possible remove and destroy the infected parts of the plant. Burn it, toss it into the garbage, or bury it deeply. Do not compost.",
+              "Apply ecological products for plant protection (e.g. neem oil, baking soda, soap)."
+            ],
+            "prevention": [
+              "Use resistant species and cultivars as well as healthy, certified seeds and seedlings.",
+              "Ensure having good soil drainage to avoid overwatering.",
+              "Improve the air circulation around the plant (e.g. by pruning excess foliage or increasing the spacing between plants).",
+              "Avoid prolonged wetting of the leaves, which can be caused e.g. by overhead irrigation.",
+              "Rotate crops. Avoid planting sensitive crops in infested soil.",
+              "Disinfect tools, infected flower pots, and hands to avoid disease transmission."
+            ]
           },
-          "url": "https://en.wikipedia.org/wiki/Grevillea",
-          "wiki_description": {
-            "value": "Grevillea,  commonly known as spider flowers, is a genus of about 360 species of evergreen flowering plants in the family Proteaceae. Plants in the genus Grevillea are shrubs, rarely trees, with the leaves arranged alternately along the branches, the flowers zygomorphic, arranged in racemes at the ends of branchlets, and the fruit a follicle that splits down one side only, releasing one or two seeds.",
-            "citation": "https://en.wikipedia.org/wiki/Grevillea",
-            "license_name": "CC BY-SA 3.0",
-            "license_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+          "language": "en"
+        }
+      },
+      {
+        "name": "Animalia",
+        "probability": 0.08351768,
+        "similar_images": [
+          {
+            "id": "14b9b05d00c799103c131b4aff97dd5dce93e084",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/14b/9b05d00c799103c131b4aff97dd5dce93e084.jpg",
+            "similarity": 0.612,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/14b/9b05d00c799103c131b4aff97dd5dce93e084.small.jpg"
           },
-          "language": "en",
-          "scientific_name": "Grevillea",
-          "structured_name": {
-            "genus": "grevillea"
+          {
+            "id": "18150760d1badee670f8f8f56d3101b523f595e3",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/181/50760d1badee670f8f8f56d3101b523f595e3.jpg",
+            "similarity": 0.486,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/181/50760d1badee670f8f8f56d3101b523f595e3.small.jpg"
           }
+        ],
+        "redundant": true,
+        "entity_id": 457,
+        "disease_details": {
+          "local_name": "Animalia",
+          "description": "Disorders induced by organisms from the animal kingdom. These pests cause direct damage by feeding on leaves, stems, roots, and other parts of the plant or by inhabiting plant tissues. Pests can also spread bacterial and viral diseases.",
+          "treatment": {
+            "chemical": ["If necessary, apply insecticide, or acaricide."],
+            "biological": [
+              "Remove pests mechanically. Rub the pests off, or remove infested parts or use a strong stream of water to remove the insect.",
+              "Apply ecological products for plant protection (e.g. sticky cards, essential oils, horticultural oil).",
+              "Introduce natural enemies - predators, parasites, or diseases (e.g. lady beetles, lacewings, parasitic wasps).",
+              "Isolate the infested plant immediately to avoid the infestation from spreading."
+            ],
+            "prevention": [
+              "Encourage the presence of natural enemies (e.g. lady beetles, lacewings, parasitic wasps).",
+              "Apply dormant oil (controls pests and diseases during the off-season).",
+              "Inspect new plants for signs of an infestation. Inspect the underside of leaves and stem joints."
+            ]
+          },
+          "language": "en"
+        }
+      },
+      {
+        "name": "rust",
+        "probability": 0.06375273,
+        "similar_images": [
+          {
+            "id": "2e560aa731b46d8d3555b840b90f3321ab76a1aa",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/2e5/60aa731b46d8d3555b840b90f3321ab76a1aa.jpg",
+            "similarity": 0.742,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/2e5/60aa731b46d8d3555b840b90f3321ab76a1aa.small.jpg"
+          },
+          {
+            "id": "0124ad2444efd7b977e9ca30700ca712c86472df",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/012/4ad2444efd7b977e9ca30700ca712c86472df.jpeg",
+            "license_name": "CC BY 3.0",
+            "license_url": "https://creativecommons.org/licenses/by/3.0/",
+            "citation": "Cesar Calderon, Cesar Calderon Pathology Collection, USDA APHIS PPQ, Bugwood.org ",
+            "similarity": 0.698,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/012/4ad2444efd7b977e9ca30700ca712c86472df.small.jpeg"
+          }
+        ],
+        "entity_id": 1030,
+        "disease_details": {
+          "local_name": "rust",
+          "description": "Rust is a large group of common fungal diseases with typical symptoms of leaf spots that develop into spore-producing structures called pustules, varying in color.",
+          "treatment": {
+            "chemical": [
+              "If necessary, apply fungicide containing acetamiprid (GHS07: Harmful).",
+              "If necessary, apply fungicide containing triticonazole (GHS09: Environmental hazard) (on outdoors ornamentals)."
+            ],
+            "biological": [
+              "If possible remove and destroy the infected parts of the plant. Burn it, toss it into the garbage, or bury it deeply. Do not compost.",
+              "Apply ecological products for plant protection (e.g. copper hydroxide for raspberries and currants, powdered sulfur)."
+            ],
+            "prevention": [
+              "Use resistant species and cultivars as well as healthy, certified seeds and seedlings.",
+              "Avoid prolonged wetting of the leaves, which can be caused e.g. by overhead irrigation.",
+              "Improve the air circulation around the plant (e.g. by pruning excess foliage or increasing the spacing between plants).",
+              "Disinfect tools, infected flower pots, and hands to avoid disease transmission."
+            ]
+          },
+          "language": "en"
+        }
+      },
+      {
+        "name": "Insecta",
+        "probability": 0.017460007,
+        "similar_images": [
+          {
+            "id": "964f6c35dbb7157b893ea0b19f222ad50eaae7bb",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/964/f6c35dbb7157b893ea0b19f222ad50eaae7bb.jpg",
+            "similarity": 0.547,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/964/f6c35dbb7157b893ea0b19f222ad50eaae7bb.small.jpg"
+          },
+          {
+            "id": "42a25f149c549c4b58e4384a1c455e57ca6c8efb",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/42a/25f149c549c4b58e4384a1c455e57ca6c8efb.jpeg",
+            "license_name": "CC BY 3.0",
+            "license_url": "https://creativecommons.org/licenses/by/3.0/",
+            "citation": "Ansel Oommen, Bugwood.org ",
+            "similarity": 0.508,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/42a/25f149c549c4b58e4384a1c455e57ca6c8efb.small.jpeg"
+          }
+        ],
+        "redundant": true,
+        "entity_id": 465,
+        "disease_details": {
+          "local_name": "Insecta",
+          "description": "Class Insecta contains many major plant pests such as aphids and thrips. Damage can be caused by both larval and adult stages. They can cause feeding damage or transmit a bacterial, viral, or fungal infection.",
+          "treatment": {
+            "chemical": [
+              "If necessary, apply insecticide.",
+              "Apply suitable insecticide based on plant species and suspected insect species."
+            ],
+            "biological": [
+              "Remove pests mechanically. Rub the pests off, or remove infested parts or use a strong stream of water to remove the insect.",
+              "Apply ecological products for plant protection (e.g. sticky cards, essential oils, horticultural oil).",
+              "Introduce natural enemies - predators, parasites, or diseases (e.g. lady beetles, lacewings, parasitic wasps).",
+              "Isolate the infested plant immediately to avoid the infestation from spreading."
+            ],
+            "prevention": [
+              "Encourage the presence of natural enemies (e.g. lady beetles, lacewings, parasitic wasps).",
+              "Apply dormant oil (controls pests and diseases during the off-season).",
+              "Inspect new plants for signs of an infestation. Inspect the underside of leaves and stem joints."
+            ]
+          },
+          "language": "en"
+        }
+      },
+      {
+        "name": "Hemiptera",
+        "probability": 0.01284571,
+        "similar_images": [
+          {
+            "id": "71a6489ee7f742f0823a4af6888bdd83426592de",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/71a/6489ee7f742f0823a4af6888bdd83426592de.jpg",
+            "similarity": 0.569,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/71a/6489ee7f742f0823a4af6888bdd83426592de.small.jpg"
+          },
+          {
+            "id": "bfb361c9573c7798dd27063c9fd0b0e7c7dd07b5",
+            "url": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/bfb/361c9573c7798dd27063c9fd0b0e7c7dd07b5.jpg",
+            "similarity": 0.528,
+            "url_small": "https://plant-id.ams3.cdn.digitaloceanspaces.com/similar_images/3/bfb/361c9573c7798dd27063c9fd0b0e7c7dd07b5.small.jpg"
+          }
+        ],
+        "entity_id": 1075,
+        "disease_details": {
+          "local_name": "Hemiptera",
+          "description": "Hemiptera is a large group of insects with a typical mouthpart causing direct damage to plants by feeding on sap from the plant tissue. This group contains major pests of crops and important vectors of infectious diseases.",
+          "treatment": {
+            "chemical": [
+              "If necessary, apply insecticide containing imidacloprid (GHS07: Harmful, GHS08: Health hazard).",
+              "If necessary, apply insecticide containing deltamethrin (GHS06: Toxic, GHS09: Environmental hazard).",
+              "If necessary, apply insecticide containing lambda-Cyhalothrin (GHS06: Toxic, GHS07: Harmful, GHS09: Environmental hazard)."
+            ],
+            "biological": [
+              "Remove pests mechanically. Rub the pests off, or remove infested parts or use a strong stream of water to remove the insect.",
+              "Apply ecological products for plant protection (e.g. soap sprays, neem oil, horticultural soap).",
+              "Introduce natural enemies - predators, parasites, or diseases (e.g. lady beetles, lacewings, parasitic wasps).",
+              "Isolate the infested plant immediately to avoid the infestation from spreading."
+            ],
+            "prevention": [
+              "Encourage the presence of natural enemies (e.g. lady beetles, lacewings, parasitic wasps).",
+              "Apply dormant oil (controls pests and diseases during the off-season).",
+              "Inspect new plants for signs of an infestation. Inspect the underside of leaves and stem joints."
+            ]
+          },
+          "language": "en"
         }
       }
-    ],
-    "modifiers": ["similar_images"],
-    "secret": "bM33tKhMSpKKUZM",
-    "fail_cause": null,
-    "countable": true,
-    "feedback": null,
-    "is_plant": false,
-    "is_plant_probability": 0.000222515
+    ]
   }
 }

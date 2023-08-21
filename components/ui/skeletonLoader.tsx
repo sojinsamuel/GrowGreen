@@ -20,13 +20,12 @@ export function SkeletonLoader() {
               {/* Temperature skeleton */}
             </li>
           </ul>
-          <Skeleton className="h-12 w-[150px] mt-3 bg-[#9ca3af]" />
           {/* Button skeleton */}
         </div>
       </div>
       <h3 className="text-lg font-extrabold my-5">
-        <Skeleton className="h-8 w-[200px] bg-[#9ca3af]" />
         {/* Buy Seeds Title skeleton */}
+        Scraping Amazon For Seeds
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-3">
         {[...Array(6)].map((_, index) => (
@@ -48,7 +47,7 @@ export function SkeletonLoader() {
         ))}
       </div>
       <h3 className="text-lg font-extrabold my-5">
-        <Skeleton className="h-8 w-[250px] bg-[#9ca3af]" />
+        Scraping Related Articles From Google{" "}
         {/* Related Articles Title skeleton */}
       </h3>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

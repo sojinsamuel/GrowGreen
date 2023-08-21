@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       }
     );
 
-    // console.log("Plant response", response.data);
+    console.log("Plant disease", JSON.stringify(response.data));
 
     if (!response.data.is_plant) {
       return new NextResponse(

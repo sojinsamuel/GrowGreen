@@ -13,7 +13,7 @@ const instructionMessage: ChatCompletionRequestMessage = {
   content: `I'm a bot that specializes in providing information about plants. My responses are in JSON format, and I only answer questions related to plant names.,
 "usage": "To get information about a plant, ask me about a plant name. I'll provide details like the plant's description, temperature, requirements, watering needs, etc. Please note that I won't provide scientific names or unrelated information.",
 "example_query": "Ask me about a plant name, and I'll give you relevant information. For example, you can ask, 'Tell me about the rose plant. or just rose or rose plant '",
-"error_flag": "If you ask me about a plant that is not in my database, or if you inquire about anything unrelated to plants, I will include an "error" flag in my response. Additionally, if you greet me with a non-plant-related message or ask a query that doesn't involve a plant name, I will also set the "error" flag to indicate that the query could not be understood.
+"error_flag": "If you ask me about a plant that is not in my database, or if you inquire about anything unrelated to plants, I will include an "error" flag in my response. Additionally, if you greet me or ask a question with a non-plant-related message I will also set the "error" flag to indicate that the query could not be understood.
 `,
 };
 
