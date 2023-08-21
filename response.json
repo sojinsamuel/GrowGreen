@@ -15,7 +15,10 @@
       "url": "https://plant.id/media/imgs/f76ae2537d3c4411ad79e0a8506264ba.jpg"
     }
   ],
-  "modifiers": ["health_only", "similar_images"],
+  "modifiers": [
+    "health_only",
+    "similar_images"
+  ],
   "secret": "7GyfCGk5G1ZhZuM",
   "fail_cause": null,
   "countable": true,
@@ -24,7 +27,7 @@
   "is_plant_probability": 1,
   "health_assessment": {
     "is_healthy": false,
-    "is_healthy_probability": 0.0000010728836059570312,
+    "is_healthy_probability": 1.0728836059570312e-06,
     "diseases": [
       {
         "name": "Fungi",
@@ -90,7 +93,9 @@
           "local_name": "Animalia",
           "description": "Disorders induced by organisms from the animal kingdom. These pests cause direct damage by feeding on leaves, stems, roots, and other parts of the plant or by inhabiting plant tissues. Pests can also spread bacterial and viral diseases.",
           "treatment": {
-            "chemical": ["If necessary, apply insecticide, or acaricide."],
+            "chemical": [
+              "If necessary, apply insecticide, or acaricide."
+            ],
             "biological": [
               "Remove pests mechanically. Rub the pests off, or remove infested parts or use a strong stream of water to remove the insect.",
               "Apply ecological products for plant protection (e.g. sticky cards, essential oils, horticultural oil).",
